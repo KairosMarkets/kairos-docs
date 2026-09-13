@@ -7,6 +7,7 @@ Source files for the Kairos whitepaper and one pager in Chinese and English, pub
 
 ```
 kairos-docs/
+├── gitbook-docs.yaml   GitBook 站点结构 · site structure
 ├── whitepaper/
 │   ├── zh/          白皮书 · 简体中文
 │   └── en/          Whitepaper · English
@@ -15,17 +16,23 @@ kairos-docs/
     └── en/          One Pager · English
 ```
 
-每个语言目录都是一个独立的 GitBook 空间，内含 `.gitbook.yaml`、`README.md`（首页）、`SUMMARY.md`（左侧目录）与 `.gitbook/assets/`（图片）。
-Each language directory is a standalone GitBook space with its own `.gitbook.yaml`, `README.md` (landing page), `SUMMARY.md` (sidebar) and `.gitbook/assets/` (images).
+仓库根目录的 `gitbook-docs.yaml` 描述整个 GitBook 站点：两个分区（白皮书、一页简介），每个分区下中英文两个语言变体，并把每个变体对应到一个目录。站点只需连接一次 Git Sync。
+`gitbook-docs.yaml` at the repository root describes the whole GitBook site: two sections (Whitepaper, One Pager), each with a Chinese and an English language variant mapped to its own directory. The site needs a single Git Sync connection.
 
-## GitBook 对应关系 · GitBook mapping
+每个语言目录内含 `.gitbook.yaml`、`README.md`（首页）、`SUMMARY.md`（左侧目录）与 `.gitbook/assets/`（图片）。
+Each language directory holds its own `.gitbook.yaml`, `README.md` (landing page), `SUMMARY.md` (sidebar) and `.gitbook/assets/` (images).
 
-| 站点分区 Section | 语言变体 Variant | Git Sync 项目目录 Project directory |
-|---|---|---|
-| 白皮书 · Whitepaper | 简体中文 | `whitepaper/zh` |
-| 白皮书 · Whitepaper | English | `whitepaper/en` |
-| 一页简介 · One Pager | 简体中文 | `one-pager/zh` |
-| 一页简介 · One Pager | English | `one-pager/en` |
+## GitBook 站点结构 · Site structure
+
+| 分区 Section | 语言变体 Variant | 目录 Directory | Key |
+|---|---|---|---|
+| 白皮书 · Whitepaper（默认） | 简体中文（默认） | `whitepaper/zh` | `space-whitepaper-zh` |
+| 白皮书 · Whitepaper | English | `whitepaper/en` | `space-whitepaper-en` |
+| 一页简介 · One Pager | 简体中文（默认） | `one-pager/zh` | `space-one-pager-zh` |
+| 一页简介 · One Pager | English | `one-pager/en` | `space-one-pager-en` |
+
+`key` 是 GitBook 识别空间的唯一依据，上线后不要修改：改名改 `title`，改网址改 `path`。
+The `key` is how GitBook identifies each space. Never change it once live: rename with `title`, change URLs with `path`.
 
 ## 编写约定 · Conventions
 
